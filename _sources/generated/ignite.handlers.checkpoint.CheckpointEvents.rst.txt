@@ -1,0 +1,29 @@
+﻿CheckpointEvents
+================
+
+.. currentmodule:: ignite.handlers.checkpoint
+
+.. autoclass:: CheckpointEvents
+   :members:
+
+   
+   
+   .. rubric:: Methods
+
+   .. autosummary::
+      :nosignatures:
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   

@@ -1,0 +1,47 @@
+﻿HitRate
+=======
+
+.. currentmodule:: ignite.metrics
+
+.. autoclass:: HitRate
+   :members:
+
+   
+   
+   .. rubric:: Methods
+
+   .. autosummary::
+      :nosignatures:
+   
+   
+   
+   
+   
+   
+   
+   
+      ~HitRate.compute
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+      ~HitRate.reset
+   
+   
+   
+   
+   
+   
+   
+      ~HitRate.update
+   
+   
+   
+   

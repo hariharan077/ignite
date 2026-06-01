@@ -1,0 +1,29 @@
+﻿EventEnum
+=========
+
+.. currentmodule:: ignite.engine.events
+
+.. autoclass:: EventEnum
+   :members:
+
+   
+   
+   .. rubric:: Methods
+
+   .. autosummary::
+      :nosignatures:
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   

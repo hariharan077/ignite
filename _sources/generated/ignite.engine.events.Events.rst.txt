@@ -1,0 +1,29 @@
+﻿Events
+======
+
+.. currentmodule:: ignite.engine.events
+
+.. autoclass:: Events
+   :members:
+
+   
+   
+   .. rubric:: Methods
+
+   .. autosummary::
+      :nosignatures:
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   

@@ -1,0 +1,47 @@
+﻿NDCG
+====
+
+.. currentmodule:: ignite.metrics
+
+.. autoclass:: NDCG
+   :members:
+
+   
+   
+   .. rubric:: Methods
+
+   .. autosummary::
+      :nosignatures:
+   
+   
+   
+   
+   
+   
+   
+   
+      ~NDCG.compute
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+      ~NDCG.reset
+   
+   
+   
+   
+   
+   
+   
+      ~NDCG.update
+   
+   
+   
+   
