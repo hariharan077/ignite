@@ -301,10 +301,10 @@ fashion without having to store the entire output history of a model.</p>
 <span id="attach-engine"></span><h2>Attach Engine API<a class="headerlink" href="#attach-engine-api" title="Permalink to this heading">#</a></h2>
 <p>The metrics as stated above are computed in a online fashion, which means that the metric instance accumulates some internal counters on
 each iteration and metric value is computed once the epoch is ended. Internal counters are reset after every epoch. In practice, this is done with the
-help of three methods: <code class="xref py py-meth docutils literal notranslate"><span class="pre">reset()</span></code>, <code class="xref py py-meth docutils literal notranslate"><span class="pre">update()</span></code> and <code class="xref py py-meth docutils literal notranslate"><span class="pre">compute()</span></code>.</p>
+help of three methods: <a class="reference internal" href="generated/ignite.metrics.Metric.html#ignite.metrics.Metric.reset" title="ignite.metrics.Metric.reset"><code class="xref py py-meth docutils literal notranslate"><span class="pre">reset()</span></code></a>, <a class="reference internal" href="generated/ignite.metrics.Metric.html#ignite.metrics.Metric.update" title="ignite.metrics.Metric.update"><code class="xref py py-meth docutils literal notranslate"><span class="pre">update()</span></code></a> and <a class="reference internal" href="generated/ignite.metrics.Metric.html#ignite.metrics.Metric.compute" title="ignite.metrics.Metric.compute"><code class="xref py py-meth docutils literal notranslate"><span class="pre">compute()</span></code></a>.</p>
 <p>Therefore, a user needs to attach the metric instance to the engine so that the above three methods can be triggered on execution of certain <a class="reference internal" href="generated/ignite.engine.events.Events.html#ignite.engine.events.Events" title="ignite.engine.events.Events"><code class="xref py py-class docutils literal notranslate"><span class="pre">Events</span></code></a>.
-The <code class="xref py py-meth docutils literal notranslate"><span class="pre">reset()</span></code> method is triggered on <code class="docutils literal notranslate"><span class="pre">EPOCH_STARTED</span></code> event and it is responsible to reset the metric to its initial state. The <code class="xref py py-meth docutils literal notranslate"><span class="pre">update()</span></code> method is triggered
-on <code class="docutils literal notranslate"><span class="pre">ITERATION_COMPLETED</span></code> event as it updates the state of the metric using the passed batch output. And <code class="xref py py-meth docutils literal notranslate"><span class="pre">compute()</span></code> is triggered on <code class="docutils literal notranslate"><span class="pre">EPOCH_COMPLETED</span></code>
+The <a class="reference internal" href="generated/ignite.metrics.Metric.html#ignite.metrics.Metric.reset" title="ignite.metrics.Metric.reset"><code class="xref py py-meth docutils literal notranslate"><span class="pre">reset()</span></code></a> method is triggered on <code class="docutils literal notranslate"><span class="pre">EPOCH_STARTED</span></code> event and it is responsible to reset the metric to its initial state. The <a class="reference internal" href="generated/ignite.metrics.Metric.html#ignite.metrics.Metric.update" title="ignite.metrics.Metric.update"><code class="xref py py-meth docutils literal notranslate"><span class="pre">update()</span></code></a> method is triggered
+on <code class="docutils literal notranslate"><span class="pre">ITERATION_COMPLETED</span></code> event as it updates the state of the metric using the passed batch output. And <a class="reference internal" href="generated/ignite.metrics.Metric.html#ignite.metrics.Metric.compute" title="ignite.metrics.Metric.compute"><code class="xref py py-meth docutils literal notranslate"><span class="pre">compute()</span></code></a> is triggered on <code class="docutils literal notranslate"><span class="pre">EPOCH_COMPLETED</span></code>
 event. It computes the metric based on its accumulated states. The metric value is computed using the output of the engine’s <code class="docutils literal notranslate"><span class="pre">process_function</span></code>:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">ignite.engine</span><span class="w"> </span><span class="kn">import</span> <span class="n">Engine</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">ignite.metrics</span><span class="w"> </span><span class="kn">import</span> <span class="n">Accuracy</span>
@@ -395,9 +395,9 @@ Therefore, use the third party library <cite>dill</cite> to overcome the limitat
 <h2>Reset, Update, Compute API<a class="headerlink" href="#reset-update-compute-api" title="Permalink to this heading">#</a></h2>
 <p>User can also call directly the following methods on the metric:</p>
 <ul class="simple">
-<li><p><code class="xref py py-meth docutils literal notranslate"><span class="pre">reset()</span></code> : resets internal variables and accumulators</p></li>
-<li><p><code class="xref py py-meth docutils literal notranslate"><span class="pre">update()</span></code> : updates internal variables and accumulators with provided batch output <code class="docutils literal notranslate"><span class="pre">(y_pred,</span> <span class="pre">y)</span></code></p></li>
-<li><p><code class="xref py py-meth docutils literal notranslate"><span class="pre">compute()</span></code> : computes custom metric and return the result</p></li>
+<li><p><a class="reference internal" href="generated/ignite.metrics.Metric.html#ignite.metrics.Metric.reset" title="ignite.metrics.Metric.reset"><code class="xref py py-meth docutils literal notranslate"><span class="pre">reset()</span></code></a> : resets internal variables and accumulators</p></li>
+<li><p><a class="reference internal" href="generated/ignite.metrics.Metric.html#ignite.metrics.Metric.update" title="ignite.metrics.Metric.update"><code class="xref py py-meth docutils literal notranslate"><span class="pre">update()</span></code></a> : updates internal variables and accumulators with provided batch output <code class="docutils literal notranslate"><span class="pre">(y_pred,</span> <span class="pre">y)</span></code></p></li>
+<li><p><a class="reference internal" href="generated/ignite.metrics.Metric.html#ignite.metrics.Metric.compute" title="ignite.metrics.Metric.compute"><code class="xref py py-meth docutils literal notranslate"><span class="pre">compute()</span></code></a> : computes custom metric and return the result</p></li>
 </ul>
 <p>This API gives a more fine-grained/custom usage on how to compute a metric. For example:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">ignite.metrics</span><span class="w"> </span><span class="kn">import</span> <span class="n">Precision</span>
@@ -462,9 +462,9 @@ otherwise we will not be computing F-beta metrics.</p>
 <p>To create a custom metric one needs to create a new class inheriting from <a class="reference internal" href="generated/ignite.metrics.Metric.html#ignite.metrics.Metric" title="ignite.metrics.metric.Metric"><code class="xref py py-class docutils literal notranslate"><span class="pre">Metric</span></code></a> and override
 three methods :</p>
 <ul class="simple">
-<li><p><code class="xref py py-meth docutils literal notranslate"><span class="pre">reset()</span></code> : resets internal variables and accumulators</p></li>
-<li><p><code class="xref py py-meth docutils literal notranslate"><span class="pre">update()</span></code> : updates internal variables and accumulators with provided batch output <code class="docutils literal notranslate"><span class="pre">(y_pred,</span> <span class="pre">y)</span></code></p></li>
-<li><p><code class="xref py py-meth docutils literal notranslate"><span class="pre">compute()</span></code> : computes custom metric and return the result</p></li>
+<li><p><a class="reference internal" href="generated/ignite.metrics.Metric.html#ignite.metrics.Metric.reset" title="ignite.metrics.Metric.reset"><code class="xref py py-meth docutils literal notranslate"><span class="pre">reset()</span></code></a> : resets internal variables and accumulators</p></li>
+<li><p><a class="reference internal" href="generated/ignite.metrics.Metric.html#ignite.metrics.Metric.update" title="ignite.metrics.Metric.update"><code class="xref py py-meth docutils literal notranslate"><span class="pre">update()</span></code></a> : updates internal variables and accumulators with provided batch output <code class="docutils literal notranslate"><span class="pre">(y_pred,</span> <span class="pre">y)</span></code></p></li>
+<li><p><a class="reference internal" href="generated/ignite.metrics.Metric.html#ignite.metrics.Metric.compute" title="ignite.metrics.Metric.compute"><code class="xref py py-meth docutils literal notranslate"><span class="pre">compute()</span></code></a> : computes custom metric and return the result</p></li>
 </ul>
 <p>For example, we would like to implement for illustration purposes a multi-class accuracy metric with some
 specific condition (e.g. ignore user-defined classes):</p>
@@ -545,9 +545,9 @@ adding them to the internal variables.</p>
 <h2>Metrics and its usages<a class="headerlink" href="#metrics-and-its-usages" title="Permalink to this heading">#</a></h2>
 <p>By default, <cite>Metrics</cite> are epoch-wise, it means</p>
 <ul class="simple">
-<li><p><code class="xref py py-meth docutils literal notranslate"><span class="pre">reset()</span></code> is triggered every <code class="docutils literal notranslate"><span class="pre">EPOCH_STARTED</span></code> (See <a class="reference internal" href="generated/ignite.engine.events.Events.html#ignite.engine.events.Events" title="ignite.engine.events.Events"><code class="xref py py-class docutils literal notranslate"><span class="pre">Events</span></code></a>).</p></li>
-<li><p><code class="xref py py-meth docutils literal notranslate"><span class="pre">update()</span></code> is triggered every <code class="docutils literal notranslate"><span class="pre">ITERATION_COMPLETED</span></code>.</p></li>
-<li><p><code class="xref py py-meth docutils literal notranslate"><span class="pre">compute()</span></code> is triggered every <code class="docutils literal notranslate"><span class="pre">EPOCH_COMPLETED</span></code>.</p></li>
+<li><p><a class="reference internal" href="generated/ignite.metrics.Metric.html#ignite.metrics.Metric.reset" title="ignite.metrics.Metric.reset"><code class="xref py py-meth docutils literal notranslate"><span class="pre">reset()</span></code></a> is triggered every <code class="docutils literal notranslate"><span class="pre">EPOCH_STARTED</span></code> (See <a class="reference internal" href="generated/ignite.engine.events.Events.html#ignite.engine.events.Events" title="ignite.engine.events.Events"><code class="xref py py-class docutils literal notranslate"><span class="pre">Events</span></code></a>).</p></li>
+<li><p><a class="reference internal" href="generated/ignite.metrics.Metric.html#ignite.metrics.Metric.update" title="ignite.metrics.Metric.update"><code class="xref py py-meth docutils literal notranslate"><span class="pre">update()</span></code></a> is triggered every <code class="docutils literal notranslate"><span class="pre">ITERATION_COMPLETED</span></code>.</p></li>
+<li><p><a class="reference internal" href="generated/ignite.metrics.Metric.html#ignite.metrics.Metric.compute" title="ignite.metrics.Metric.compute"><code class="xref py py-meth docutils literal notranslate"><span class="pre">compute()</span></code></a> is triggered every <code class="docutils literal notranslate"><span class="pre">EPOCH_COMPLETED</span></code>.</p></li>
 </ul>
 <p>Usages can be user defined by creating a class inheriting from <a class="reference internal" href="#ignite.metrics.metric.MetricUsage" title="ignite.metrics.metric.MetricUsage"><code class="xref py py-class docutils literal notranslate"><span class="pre">MetricUsage</span></code></a>. See the list below of usages.</p>
 <section id="complete-list-of-usages">
@@ -843,11 +843,11 @@ Valid events are from <a class="reference internal" href="generated/ignite.engin
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>started</strong> (<a class="reference internal" href="generated/ignite.engine.events.Events.html#ignite.engine.events.Events" title="ignite.engine.events.Events"><em>Events</em></a>) – event when the metric starts to compute. This event will be associated to
-<code class="xref py py-meth docutils literal notranslate"><span class="pre">started()</span></code>.</p></li>
+<a class="reference internal" href="generated/ignite.metrics.Metric.html#ignite.metrics.Metric.started" title="ignite.metrics.Metric.started"><code class="xref py py-meth docutils literal notranslate"><span class="pre">started()</span></code></a>.</p></li>
 <li><p><strong>completed</strong> (<a class="reference internal" href="generated/ignite.engine.events.Events.html#ignite.engine.events.Events" title="ignite.engine.events.Events"><em>Events</em></a>) – event when the metric completes. This event will be associated to
-<code class="xref py py-meth docutils literal notranslate"><span class="pre">completed()</span></code>.</p></li>
+<a class="reference internal" href="generated/ignite.metrics.Metric.html#ignite.metrics.Metric.completed" title="ignite.metrics.Metric.completed"><code class="xref py py-meth docutils literal notranslate"><span class="pre">completed()</span></code></a>.</p></li>
 <li><p><strong>iteration_completed</strong> (<a class="reference internal" href="generated/ignite.engine.events.CallableEventWithFilter.html#ignite.engine.events.CallableEventWithFilter" title="ignite.engine.events.CallableEventWithFilter"><em>CallableEventWithFilter</em></a>) – event when the metric updates. This event will be associated to
-<code class="xref py py-meth docutils literal notranslate"><span class="pre">iteration_completed()</span></code>.</p></li>
+<a class="reference internal" href="generated/ignite.metrics.Metric.html#ignite.metrics.Metric.iteration_completed" title="ignite.metrics.Metric.iteration_completed"><code class="xref py py-meth docutils literal notranslate"><span class="pre">iteration_completed()</span></code></a>.</p></li>
 </ul>
 </dd>
 </dl>
@@ -862,10 +862,10 @@ Valid events are from <a class="reference internal" href="generated/ignite.engin
 <dd><p>Epoch-wise usage of Metrics. It’s the default and most common usage of metrics.</p>
 <p>Metric’s methods are triggered on the following engine events:</p>
 <ul class="simple">
-<li><p><code class="xref py py-meth docutils literal notranslate"><span class="pre">started()</span></code> on every <code class="docutils literal notranslate"><span class="pre">EPOCH_STARTED</span></code>
+<li><p><a class="reference internal" href="generated/ignite.metrics.Metric.html#ignite.metrics.Metric.started" title="ignite.metrics.Metric.started"><code class="xref py py-meth docutils literal notranslate"><span class="pre">started()</span></code></a> on every <code class="docutils literal notranslate"><span class="pre">EPOCH_STARTED</span></code>
 (See <a class="reference internal" href="generated/ignite.engine.events.Events.html#ignite.engine.events.Events" title="ignite.engine.events.Events"><code class="xref py py-class docutils literal notranslate"><span class="pre">Events</span></code></a>).</p></li>
-<li><p><code class="xref py py-meth docutils literal notranslate"><span class="pre">iteration_completed()</span></code> on every <code class="docutils literal notranslate"><span class="pre">ITERATION_COMPLETED</span></code>.</p></li>
-<li><p><code class="xref py py-meth docutils literal notranslate"><span class="pre">completed()</span></code> on every <code class="docutils literal notranslate"><span class="pre">EPOCH_COMPLETED</span></code>.</p></li>
+<li><p><a class="reference internal" href="generated/ignite.metrics.Metric.html#ignite.metrics.Metric.iteration_completed" title="ignite.metrics.Metric.iteration_completed"><code class="xref py py-meth docutils literal notranslate"><span class="pre">iteration_completed()</span></code></a> on every <code class="docutils literal notranslate"><span class="pre">ITERATION_COMPLETED</span></code>.</p></li>
+<li><p><a class="reference internal" href="generated/ignite.metrics.Metric.html#ignite.metrics.Metric.completed" title="ignite.metrics.Metric.completed"><code class="xref py py-meth docutils literal notranslate"><span class="pre">completed()</span></code></a> on every <code class="docutils literal notranslate"><span class="pre">EPOCH_COMPLETED</span></code>.</p></li>
 </ul>
 <dl class="field-list simple">
 </dl>
@@ -893,10 +893,10 @@ usage. A metric with such a usage most likely accompanies an <a class="reference
 a running measure of it e.g. running average.</p>
 <p>Metric’s methods are triggered on the following engine events:</p>
 <ul class="simple">
-<li><p><code class="xref py py-meth docutils literal notranslate"><span class="pre">started()</span></code> on every <code class="docutils literal notranslate"><span class="pre">STARTED</span></code>
+<li><p><a class="reference internal" href="generated/ignite.metrics.Metric.html#ignite.metrics.Metric.started" title="ignite.metrics.Metric.started"><code class="xref py py-meth docutils literal notranslate"><span class="pre">started()</span></code></a> on every <code class="docutils literal notranslate"><span class="pre">STARTED</span></code>
 (See <a class="reference internal" href="generated/ignite.engine.events.Events.html#ignite.engine.events.Events" title="ignite.engine.events.Events"><code class="xref py py-class docutils literal notranslate"><span class="pre">Events</span></code></a>).</p></li>
-<li><p><code class="xref py py-meth docutils literal notranslate"><span class="pre">iteration_completed()</span></code> on every <code class="docutils literal notranslate"><span class="pre">EPOCH_COMPLETED</span></code>.</p></li>
-<li><p><code class="xref py py-meth docutils literal notranslate"><span class="pre">completed()</span></code> on every <code class="docutils literal notranslate"><span class="pre">EPOCH_COMPLETED</span></code>.</p></li>
+<li><p><a class="reference internal" href="generated/ignite.metrics.Metric.html#ignite.metrics.Metric.iteration_completed" title="ignite.metrics.Metric.iteration_completed"><code class="xref py py-meth docutils literal notranslate"><span class="pre">iteration_completed()</span></code></a> on every <code class="docutils literal notranslate"><span class="pre">EPOCH_COMPLETED</span></code>.</p></li>
+<li><p><a class="reference internal" href="generated/ignite.metrics.Metric.html#ignite.metrics.Metric.completed" title="ignite.metrics.Metric.completed"><code class="xref py py-meth docutils literal notranslate"><span class="pre">completed()</span></code></a> on every <code class="docutils literal notranslate"><span class="pre">EPOCH_COMPLETED</span></code>.</p></li>
 </ul>
 <dl class="field-list simple">
 </dl>
@@ -922,10 +922,10 @@ a running measure of it e.g. running average.</p>
 <dd><p>Batch-wise usage of Metrics.</p>
 <p>Metric’s methods are triggered on the following engine events:</p>
 <ul class="simple">
-<li><p><code class="xref py py-meth docutils literal notranslate"><span class="pre">started()</span></code> on every <code class="docutils literal notranslate"><span class="pre">ITERATION_STARTED</span></code>
+<li><p><a class="reference internal" href="generated/ignite.metrics.Metric.html#ignite.metrics.Metric.started" title="ignite.metrics.Metric.started"><code class="xref py py-meth docutils literal notranslate"><span class="pre">started()</span></code></a> on every <code class="docutils literal notranslate"><span class="pre">ITERATION_STARTED</span></code>
 (See <a class="reference internal" href="generated/ignite.engine.events.Events.html#ignite.engine.events.Events" title="ignite.engine.events.Events"><code class="xref py py-class docutils literal notranslate"><span class="pre">Events</span></code></a>).</p></li>
-<li><p><code class="xref py py-meth docutils literal notranslate"><span class="pre">iteration_completed()</span></code> on every <code class="docutils literal notranslate"><span class="pre">ITERATION_COMPLETED</span></code>.</p></li>
-<li><p><code class="xref py py-meth docutils literal notranslate"><span class="pre">completed()</span></code> on every <code class="docutils literal notranslate"><span class="pre">ITERATION_COMPLETED</span></code>.</p></li>
+<li><p><a class="reference internal" href="generated/ignite.metrics.Metric.html#ignite.metrics.Metric.iteration_completed" title="ignite.metrics.Metric.iteration_completed"><code class="xref py py-meth docutils literal notranslate"><span class="pre">iteration_completed()</span></code></a> on every <code class="docutils literal notranslate"><span class="pre">ITERATION_COMPLETED</span></code>.</p></li>
+<li><p><a class="reference internal" href="generated/ignite.metrics.Metric.html#ignite.metrics.Metric.completed" title="ignite.metrics.Metric.completed"><code class="xref py py-meth docutils literal notranslate"><span class="pre">completed()</span></code></a> on every <code class="docutils literal notranslate"><span class="pre">ITERATION_COMPLETED</span></code>.</p></li>
 </ul>
 <dl class="field-list simple">
 </dl>
@@ -953,10 +953,10 @@ usage. A metric with such a usage could for example accompany a <a class="refere
 a running measure of it e.g. running average.</p>
 <p>Metric’s methods are triggered on the following engine events:</p>
 <ul class="simple">
-<li><p><code class="xref py py-meth docutils literal notranslate"><span class="pre">started()</span></code> on every <code class="docutils literal notranslate"><span class="pre">STARTED</span></code>
+<li><p><a class="reference internal" href="generated/ignite.metrics.Metric.html#ignite.metrics.Metric.started" title="ignite.metrics.Metric.started"><code class="xref py py-meth docutils literal notranslate"><span class="pre">started()</span></code></a> on every <code class="docutils literal notranslate"><span class="pre">STARTED</span></code>
 (See <a class="reference internal" href="generated/ignite.engine.events.Events.html#ignite.engine.events.Events" title="ignite.engine.events.Events"><code class="xref py py-class docutils literal notranslate"><span class="pre">Events</span></code></a>).</p></li>
-<li><p><code class="xref py py-meth docutils literal notranslate"><span class="pre">iteration_completed()</span></code> on every <code class="docutils literal notranslate"><span class="pre">ITERATION_COMPLETED</span></code>.</p></li>
-<li><p><code class="xref py py-meth docutils literal notranslate"><span class="pre">completed()</span></code> on every <code class="docutils literal notranslate"><span class="pre">ITERATION_COMPLETED</span></code>.</p></li>
+<li><p><a class="reference internal" href="generated/ignite.metrics.Metric.html#ignite.metrics.Metric.iteration_completed" title="ignite.metrics.Metric.iteration_completed"><code class="xref py py-meth docutils literal notranslate"><span class="pre">iteration_completed()</span></code></a> on every <code class="docutils literal notranslate"><span class="pre">ITERATION_COMPLETED</span></code>.</p></li>
+<li><p><a class="reference internal" href="generated/ignite.metrics.Metric.html#ignite.metrics.Metric.completed" title="ignite.metrics.Metric.completed"><code class="xref py py-meth docutils literal notranslate"><span class="pre">completed()</span></code></a> on every <code class="docutils literal notranslate"><span class="pre">ITERATION_COMPLETED</span></code>.</p></li>
 </ul>
 <dl class="field-list simple">
 </dl>
@@ -983,10 +983,10 @@ a running measure of it e.g. running average.</p>
 usage with the difference that is used during a single epoch.</p>
 <p>Metric’s methods are triggered on the following engine events:</p>
 <ul class="simple">
-<li><p><code class="xref py py-meth docutils literal notranslate"><span class="pre">started()</span></code> on every <code class="docutils literal notranslate"><span class="pre">EPOCH_STARTED</span></code>
+<li><p><a class="reference internal" href="generated/ignite.metrics.Metric.html#ignite.metrics.Metric.started" title="ignite.metrics.Metric.started"><code class="xref py py-meth docutils literal notranslate"><span class="pre">started()</span></code></a> on every <code class="docutils literal notranslate"><span class="pre">EPOCH_STARTED</span></code>
 (See <a class="reference internal" href="generated/ignite.engine.events.Events.html#ignite.engine.events.Events" title="ignite.engine.events.Events"><code class="xref py py-class docutils literal notranslate"><span class="pre">Events</span></code></a>).</p></li>
-<li><p><code class="xref py py-meth docutils literal notranslate"><span class="pre">iteration_completed()</span></code> on every <code class="docutils literal notranslate"><span class="pre">ITERATION_COMPLETED</span></code>.</p></li>
-<li><p><code class="xref py py-meth docutils literal notranslate"><span class="pre">completed()</span></code> on every <code class="docutils literal notranslate"><span class="pre">ITERATION_COMPLETED</span></code>.</p></li>
+<li><p><a class="reference internal" href="generated/ignite.metrics.Metric.html#ignite.metrics.Metric.iteration_completed" title="ignite.metrics.Metric.iteration_completed"><code class="xref py py-meth docutils literal notranslate"><span class="pre">iteration_completed()</span></code></a> on every <code class="docutils literal notranslate"><span class="pre">ITERATION_COMPLETED</span></code>.</p></li>
+<li><p><a class="reference internal" href="generated/ignite.metrics.Metric.html#ignite.metrics.Metric.completed" title="ignite.metrics.Metric.completed"><code class="xref py py-meth docutils literal notranslate"><span class="pre">completed()</span></code></a> on every <code class="docutils literal notranslate"><span class="pre">ITERATION_COMPLETED</span></code>.</p></li>
 </ul>
 <dl class="field-list simple">
 </dl>
@@ -1012,17 +1012,17 @@ usage with the difference that is used during a single epoch.</p>
 <dd><p>Batch filtered usage of Metrics. This usage is similar to epoch-wise but update event is filtered.</p>
 <p>Metric’s methods are triggered on the following engine events:</p>
 <ul class="simple">
-<li><p><code class="xref py py-meth docutils literal notranslate"><span class="pre">started()</span></code> on every <code class="docutils literal notranslate"><span class="pre">EPOCH_STARTED</span></code>
+<li><p><a class="reference internal" href="generated/ignite.metrics.Metric.html#ignite.metrics.Metric.started" title="ignite.metrics.Metric.started"><code class="xref py py-meth docutils literal notranslate"><span class="pre">started()</span></code></a> on every <code class="docutils literal notranslate"><span class="pre">EPOCH_STARTED</span></code>
 (See <a class="reference internal" href="generated/ignite.engine.events.Events.html#ignite.engine.events.Events" title="ignite.engine.events.Events"><code class="xref py py-class docutils literal notranslate"><span class="pre">Events</span></code></a>).</p></li>
-<li><p><code class="xref py py-meth docutils literal notranslate"><span class="pre">iteration_completed()</span></code> on filtered <code class="docutils literal notranslate"><span class="pre">ITERATION_COMPLETED</span></code>.</p></li>
-<li><p><code class="xref py py-meth docutils literal notranslate"><span class="pre">completed()</span></code> on every <code class="docutils literal notranslate"><span class="pre">EPOCH_COMPLETED</span></code>.</p></li>
+<li><p><a class="reference internal" href="generated/ignite.metrics.Metric.html#ignite.metrics.Metric.iteration_completed" title="ignite.metrics.Metric.iteration_completed"><code class="xref py py-meth docutils literal notranslate"><span class="pre">iteration_completed()</span></code></a> on filtered <code class="docutils literal notranslate"><span class="pre">ITERATION_COMPLETED</span></code>.</p></li>
+<li><p><a class="reference internal" href="generated/ignite.metrics.Metric.html#ignite.metrics.Metric.completed" title="ignite.metrics.Metric.completed"><code class="xref py py-meth docutils literal notranslate"><span class="pre">completed()</span></code></a> on every <code class="docutils literal notranslate"><span class="pre">EPOCH_COMPLETED</span></code>.</p></li>
 </ul>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>args</strong> (<a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Any" title="(in Python v3.14)"><em>Any</em></a>) – Positional arguments to setup <a class="reference internal" href="generated/ignite.engine.events.Events.html#ignite.engine.events.Events.ITERATION_COMPLETED" title="ignite.engine.events.Events.ITERATION_COMPLETED"><code class="xref py py-attr docutils literal notranslate"><span class="pre">ITERATION_COMPLETED</span></code></a></p></li>
 <li><p><strong>kwargs</strong> (<a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Any" title="(in Python v3.14)"><em>Any</em></a>) – Keyword arguments to setup <a class="reference internal" href="generated/ignite.engine.events.Events.html#ignite.engine.events.Events.ITERATION_COMPLETED" title="ignite.engine.events.Events.ITERATION_COMPLETED"><code class="xref py py-attr docutils literal notranslate"><span class="pre">ITERATION_COMPLETED</span></code></a>
-handled by <code class="xref py py-meth docutils literal notranslate"><span class="pre">iteration_completed()</span></code>.</p></li>
+handled by <a class="reference internal" href="generated/ignite.metrics.Metric.html#ignite.metrics.Metric.iteration_completed" title="ignite.metrics.Metric.iteration_completed"><code class="xref py py-meth docutils literal notranslate"><span class="pre">iteration_completed()</span></code></a>.</p></li>
 </ul>
 </dd>
 </dl>
@@ -1104,7 +1104,7 @@ across all participating processes and apply the specified reduction operation.<
         <td>
             <p>
                 &copy; Copyright 2026, PyTorch-Ignite Contributors.
-              Last updated on 06/01/2026, 5:55:16 PM.
+              Last updated on 06/01/2026, 6:03:54 PM.
             </p>
             
               <div>
