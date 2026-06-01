@@ -20,11 +20,11 @@
   <meta name="twitter:site" content="@pytorch_ignite">
   <meta name="twitter:creator" content="@pytorch_ignite">
   <meta name="twitter:description" content="High-level library to help with training and evaluating neural networks in PyTorch flexibly and transparently.">
-  <meta name="twitter:title" content="NDCG &mdash; PyTorch-Ignite 0.6.0 Documentation">
+  <meta name="twitter:title" content="HitRate &mdash; PyTorch-Ignite 0.6.0 Documentation">
   <meta name="twitter:image" content="https://raw.githubusercontent.com/pytorch/ignite/master/assets/logo/ignite_logo.png">
   <meta name="twitter:image:alt" content="PyTorch-Ignite logo">
 
-  <meta property="og:title" content="NDCG &mdash; PyTorch-Ignite 0.6.0 Documentation">
+  <meta property="og:title" content="HitRate &mdash; PyTorch-Ignite 0.6.0 Documentation">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://pytorch.org/ignite/">
   <meta property="og:site_name" content="PyTorch-Ignite">
@@ -33,14 +33,14 @@
   <meta property="og:description" content="High-level library to help with training and evaluating neural networks in PyTorch flexibly and transparently.">
 
   
-  <title>NDCG &mdash; PyTorch-Ignite 0.6.0 Documentation</title>
+  <title>HitRate &mdash; PyTorch-Ignite 0.6.0 Documentation</title>
   
 
   
   
   
   
-    <link rel="canonical" href="https://pytorch.org/ignite/generated/ignite.metrics.NDCG.html"/>
+    <link rel="canonical" href="https://pytorch.org/ignite/generated/ignite.metrics.rec_sys.HitRate.html"/>
   
 
   
@@ -71,8 +71,8 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@docsearch/css@3" type="text/css" />
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="ignite.distributed" href="../distributed.html" />
-    <link rel="prev" title="HitRate" href="ignite.metrics.HitRate.html" /> 
+    <link rel="next" title="NDCG" href="ignite.metrics.rec_sys.NDCG.html" />
+    <link rel="prev" title="SubgroupMetric" href="ignite.metrics.fairness.SubgroupMetric.html" /> 
 
   <!-- katex links / this needs to be loaded before fonts.html -->
 
@@ -263,13 +263,13 @@
         
           <li><a href="../metrics.html">ignite.metrics</a> &gt;</li>
         
-      <li>NDCG</li>
+      <li>HitRate</li>
     
     
       <li class="pytorch-breadcrumbs-aside">
         
             
-            <a href="../_sources/generated/ignite.metrics.NDCG.rst.txt" rel="nofollow"><img src="../_static/images/view-page-source-icon.svg"></a>
+            <a href="../_sources/generated/ignite.metrics.rec_sys.HitRate.rst.txt" rel="nofollow"><img src="../_static/images/view-page-source-icon.svg"></a>
           
         
       </li>
@@ -295,63 +295,38 @@
             <div role="main" class="main-content" itemscope="itemscope" itemtype="http://schema.org/Article">
              <article itemprop="articleBody" id="pytorch-article" class="pytorch-article">
               
-  <section id="ndcg">
-<h1>NDCG<a class="headerlink" href="#ndcg" title="Permalink to this heading">#</a></h1>
+  <section id="hitrate">
+<h1>HitRate<a class="headerlink" href="#hitrate" title="Permalink to this heading">#</a></h1>
 <dl class="py class">
-<dt class="sig sig-object py" id="ignite.metrics.NDCG">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">ignite.metrics.</span></span><span class="sig-name descname"><span class="pre">NDCG</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">top_k</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ignore_zero_hits=True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">relevance_threshold=1.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">gain_function='exp_rank'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">output_transform=&lt;function</span> <span class="pre">NDCG.&lt;lambda&gt;&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">device=device(type='cpu')</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">skip_unrolling=False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ignite/metrics/rec_sys/ndcg.html#NDCG"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ignite.metrics.NDCG" title="Permalink to this definition">#</a></dt>
-<dd><p>Calculates the Normalized Discounted Cumulative Gain (NDCG) at <cite>k</cite> for Recommendation Systems.</p>
-<p>For a step-by-step guide on how to use this metric, please refer to the
-<cite>NDCG Tutorial &lt;https://github.com/pytorch-ignite/examples/tree/main/tutorials/intermediate/ndcg-metric-tutorial.ipynb&gt;</cite></p>
-<p>NDCG measures the quality of ranking by considering both the relevance of items and their
-positions in the ranked list. It compares the achieved DCG against the ideal DCG (IDCG)
-obtained by sorting items by their true relevance.</p>
+<dt class="sig sig-object py" id="ignite.metrics.rec_sys.HitRate">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">ignite.metrics.rec_sys.</span></span><span class="sig-name descname"><span class="pre">HitRate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">top_k=1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ignore_zero_hits=True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">output_transform=&lt;function</span> <span class="pre">HitRate.&lt;lambda&gt;&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">device=device(type='cpu')</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">skip_unrolling=False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ignite/metrics/rec_sys/hitrate.html#HitRate"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ignite.metrics.rec_sys.HitRate" title="Permalink to this definition">#</a></dt>
+<dd><p>Calculates the Hit Rate at <cite>k</cite> for Recommendation Systems.</p>
+<p>The Hit Rate measures the fraction of users for which the model was able
+to predict at least one correct recommendation.
+<cite>Hit</cite> for each user is either 0 or 1, irrespective of how many correct recommendations
+the model was able to predict for that user.</p>
 <div class="math">
-<span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><mtext>NDCG</mtext><mi mathvariant="normal">@</mi><mi>K</mi><mo>=</mo><mfrac><mrow><mtext>DCG</mtext><mi mathvariant="normal">@</mi><mi>K</mi></mrow><mrow><mtext>IDCG</mtext><mi mathvariant="normal">@</mi><mi>K</mi></mrow></mfrac></mrow><annotation encoding="application/x-tex">\text{NDCG}@K = \frac{\text{DCG}@K}{\text{IDCG}@K}
+<span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><mtext>HR</mtext><mi mathvariant="normal">@</mi><mi>K</mi><mo>=</mo><mfrac><mn>1</mn><mi>N</mi></mfrac><munderover><mo>∑</mo><mrow><mi>i</mi><mo>=</mo><mn>1</mn></mrow><mi>N</mi></munderover><mn mathvariant="double-struck">1</mn><mo stretchy="false">(</mo><msub><mtext>rank</mtext><mi>i</mi></msub><mo>≤</mo><mi>K</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">\text{HR}@K = \frac{1}{N} \sum_{i=1}^{N} \mathbb{1}(\text{rank}_i \leq K)
 
-</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6944em;"></span><span class="mord text"><span class="mord">NDCG</span></span><span class="mord">@</span><span class="mord mathnormal" style="margin-right:0.07153em;">K</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:2.0574em;vertical-align:-0.686em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.3714em;"><span style="top:-2.314em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord text"><span class="mord">IDCG</span></span><span class="mord">@</span><span class="mord mathnormal" style="margin-right:0.07153em;">K</span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.677em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord text"><span class="mord">DCG</span></span><span class="mord">@</span><span class="mord mathnormal" style="margin-right:0.07153em;">K</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.686em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span></span></span></span></span></div><p>where:</p>
-<div class="math">
-<span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><mtext>DCG</mtext><mi mathvariant="normal">@</mi><mi>K</mi><mo>=</mo><munderover><mo>∑</mo><mrow><mi>i</mi><mo>=</mo><mn>1</mn></mrow><mi>K</mi></munderover><mfrac><mrow><msup><mn>2</mn><msub><mtext>rel</mtext><mi>i</mi></msub></msup><mo>−</mo><mn>1</mn></mrow><mrow><msub><mrow><mi>log</mi><mo>⁡</mo></mrow><mn>2</mn></msub><mo stretchy="false">(</mo><mi>i</mi><mo>+</mo><mn>1</mn><mo stretchy="false">)</mo></mrow></mfrac></mrow><annotation encoding="application/x-tex">\text{DCG}@K = \sum_{i=1}^{K} \frac{2^{\text{rel}_i} - 1}{\log_2(i + 1)}
-
-</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6944em;"></span><span class="mord text"><span class="mord">DCG</span></span><span class="mord">@</span><span class="mord mathnormal" style="margin-right:0.07153em;">K</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:3.106em;vertical-align:-1.2777em;"></span><span class="mop op-limits"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.8283em;"><span style="top:-1.8723em;margin-left:0em;"><span class="pstrut" style="height:3.05em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">i</span><span class="mrel mtight">=</span><span class="mord mtight">1</span></span></span></span><span style="top:-3.05em;"><span class="pstrut" style="height:3.05em;"></span><span><span class="mop op-symbol large-op">∑</span></span></span><span style="top:-4.3em;margin-left:0em;"><span class="pstrut" style="height:3.05em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight" style="margin-right:0.07153em;">K</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:1.2777em;"><span></span></span></span></span></span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.5261em;"><span style="top:-2.314em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mop"><span class="mop">lo<span style="margin-right:0.01389em;">g</span></span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.207em;"><span style="top:-2.4559em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2441em;"><span></span></span></span></span></span></span><span class="mopen">(</span><span class="mord mathnormal">i</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mord">1</span><span class="mclose">)</span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.677em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord"><span class="mord">2</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8491em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight"><span class="mord text mtight"><span class="mord mtight">rel</span></span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3281em;"><span style="top:-2.357em;margin-right:0.0714em;"><span class="pstrut" style="height:2.5em;"></span><span class="sizing reset-size3 size1 mtight"><span class="mord mathnormal mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.143em;"><span></span></span></span></span></span></span></span></span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mord">1</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.936em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span></span></span></span></span></div><p>and <span class="math"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mtext>rel</mtext><mi>i</mi></msub></mrow><annotation encoding="application/x-tex">\text{rel}_i</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8444em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord text"><span class="mord">rel</span></span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3117em;"><span style="top:-2.55em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span></span> is the relevance score of the item at position <span class="math"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>i</mi></mrow><annotation encoding="application/x-tex">i</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6595em;"></span><span class="mord mathnormal">i</span></span></span></span></span> in the
-ranked list (1-indexed).</p>
-<ul>
+</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6944em;"></span><span class="mord text"><span class="mord">HR</span></span><span class="mord">@</span><span class="mord mathnormal" style="margin-right:0.07153em;">K</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:3.106em;vertical-align:-1.2777em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.3214em;"><span style="top:-2.314em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.10903em;">N</span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.677em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord">1</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.686em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mop op-limits"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.8283em;"><span style="top:-1.8723em;margin-left:0em;"><span class="pstrut" style="height:3.05em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">i</span><span class="mrel mtight">=</span><span class="mord mtight">1</span></span></span></span><span style="top:-3.05em;"><span class="pstrut" style="height:3.05em;"></span><span><span class="mop op-symbol large-op">∑</span></span></span><span style="top:-4.3em;margin-left:0em;"><span class="pstrut" style="height:3.05em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight" style="margin-right:0.10903em;">N</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:1.2777em;"><span></span></span></span></span></span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord">1</span><span class="mopen">(</span><span class="mord"><span class="mord text"><span class="mord">rank</span></span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3117em;"><span style="top:-2.55em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">≤</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.07153em;">K</span><span class="mclose">)</span></span></span></span></span></div><p>where <span class="math"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mtext>rank</mtext><mi>i</mi></msub></mrow><annotation encoding="application/x-tex">\text{rank}_i</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8444em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord text"><span class="mord">rank</span></span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3117em;"><span style="top:-2.55em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span></span> is rank of the first relevant item in the predicted
+tensor <span class="math"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi mathvariant="bold">q</mi><mi>i</mi></msub></mrow><annotation encoding="application/x-tex">\mathbf{q}_i</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6389em;vertical-align:-0.1944em;"></span><span class="mord"><span class="mord mathbf">q</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3117em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span></span> that exists in the ground truth tensor <span class="math"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi mathvariant="bold">p</mi><mi>i</mi></msub></mrow><annotation encoding="application/x-tex">\mathbf{p}_i</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6389em;vertical-align:-0.1944em;"></span><span class="mord"><span class="mord mathbf">p</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3117em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span></span>.</p>
+<ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">update</span></code> must receive output of the form <code class="docutils literal notranslate"><span class="pre">(y_pred,</span> <span class="pre">y)</span></code>.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">y_pred</span></code> is expected to be raw logits or probability score for each item in the catalog.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">y</span></code> is expected to contain relevance scores (can be binary or graded).</p>
-<p>Relevance Types:
-- <strong>Binary relevance</strong>: Labels are either 0 (not relevant) or 1 (relevant)
-- <strong>Graded relevance</strong>: Labels can have multiple levels (e.g., 0-4 scale)</p>
-<blockquote>
-<div><p>Common graded scales:
-- 0: Not relevant
-- 1: Marginally relevant
-- 2: Relevant
-- 3: Highly relevant
-- 4: Perfectly relevant</p>
-</div></blockquote>
-<p>The NDCG formula handles both types through the gain function: 2^relevance - 1.
-Higher relevance scores contribute more to the metric.</p>
-</li>
-<li><p><code class="docutils literal notranslate"><span class="pre">y_pred</span></code> and <code class="docutils literal notranslate"><span class="pre">y</span></code> are only allowed shape <span class="math"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false">(</mo><mi>b</mi><mi>a</mi><mi>t</mi><mi>c</mi><mi>h</mi><mo separator="true">,</mo><mi>n</mi><mi>u</mi><mi>m</mi><mi mathvariant="normal">_</mi><mi>i</mi><mi>t</mi><mi>e</mi><mi>m</mi><mi>s</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">(batch, num\_items)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.06em;vertical-align:-0.31em;"></span><span class="mopen">(</span><span class="mord mathnormal">ba</span><span class="mord mathnormal">t</span><span class="mord mathnormal">c</span><span class="mord mathnormal">h</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal">n</span><span class="mord mathnormal">u</span><span class="mord mathnormal">m</span><span class="mord" style="margin-right:0.02778em;">_</span><span class="mord mathnormal">i</span><span class="mord mathnormal">t</span><span class="mord mathnormal">e</span><span class="mord mathnormal">m</span><span class="mord mathnormal">s</span><span class="mclose">)</span></span></span></span></span>.</p></li>
-<li><p>returns a list of NDCG ordered by the sorted values of <code class="docutils literal notranslate"><span class="pre">top_k</span></code>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">y</span></code> is expected to be binary (only 0s and 1s) values where <cite>1</cite> indicates relevant item.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">y_pred</span></code> and <code class="docutils literal notranslate"><span class="pre">y</span></code> are only allowed shape <span class="math"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false">(</mo><mi>b</mi><mi>a</mi><mi>t</mi><mi>c</mi><mi>h</mi><mo separator="true">,</mo><mi>n</mi><mi>u</mi><msub><mi>m</mi><mi>i</mi></msub><mi>t</mi><mi>e</mi><mi>m</mi><mi>s</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">(batch, num_items)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">(</span><span class="mord mathnormal">ba</span><span class="mord mathnormal">t</span><span class="mord mathnormal">c</span><span class="mord mathnormal">h</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal">n</span><span class="mord mathnormal">u</span><span class="mord"><span class="mord mathnormal">m</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3117em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mord mathnormal">t</span><span class="mord mathnormal">e</span><span class="mord mathnormal">m</span><span class="mord mathnormal">s</span><span class="mclose">)</span></span></span></span></span>.</p></li>
+<li><p>returns a list of HitRate ordered by the sorted values of <code class="docutils literal notranslate"><span class="pre">top_k</span></code>.</p></li>
 </ul>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>top_k</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.14)"><em>list</em></a><em>[</em><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.14)"><em>int</em></a><em>]</em>) – a list of sorted positive integers that specifies <cite>k</cite> for calculating <a class="reference external" href="mailto:NDCG&#37;&#52;&#48;top-k">NDCG<span>&#64;</span>top-k</a>.</p></li>
+<li><p><strong>top_k</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.14)"><em>list</em></a><em>[</em><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.14)"><em>int</em></a><em>] </em><em>| </em><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.14)"><em>int</em></a>) – a single positive integer or a list of positive integers that specifies <cite>k</cite> for
+calculating <a class="reference external" href="mailto:hitrate&#37;&#52;&#48;top-k">hitrate<span>&#64;</span>top-k</a>. If a single int is provided, it will be wrapped in a list.
+Default is 1.</p></li>
 <li><p><strong>ignore_zero_hits</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.14)"><em>bool</em></a>) – if True, users with no relevant items (ground truth tensor being all zeros)
-are ignored in computation of NDCG. If set False, such users are counted with NDCG of 0.
+are ignored in computation of HitRate. if set False, such users are counted as a miss.
 By default, True.</p></li>
-<li><p><strong>relevance_threshold</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.14)"><em>float</em></a>) – minimum label value to be considered relevant. Defaults to <code class="docutils literal notranslate"><span class="pre">1</span></code>,
-which handles standard binary labels and graded relevance scales (e.g. TREC-style
-0-4) by treating any label &gt;= 1 as relevant. Items below this threshold contribute
-0 to DCG/IDCG calculations.</p></li>
-<li><p><strong>gain_function</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><em>str</em></a>) – Gain function for relevance scores. Options:
-- <code class="docutils literal notranslate"><span class="pre">'exp_rank'</span></code>: 2^relevance - 1 (emphasizes high relevance, default)
-- <code class="docutils literal notranslate"><span class="pre">'linear_rank'</span></code>: relevance (simpler, linear scale)
-Defaults to <code class="docutils literal notranslate"><span class="pre">'exp_rank'</span></code>.</p></li>
-<li><p><strong>output_transform</strong> (<a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Callable" title="(in Python v3.14)"><em>Callable</em></a>) – a callable that is used to transform the
+<li><p><strong>output_transform</strong> (<a class="reference external" href="https://docs.python.org/3/library/collections.abc.html#collections.abc.Callable" title="(in Python v3.14)"><em>Callable</em></a>) – a callable that is used to transform the
 <a class="reference internal" href="ignite.engine.engine.Engine.html#ignite.engine.engine.Engine" title="ignite.engine.engine.Engine"><code class="xref py py-class docutils literal notranslate"><span class="pre">Engine</span></code></a>’s <code class="docutils literal notranslate"><span class="pre">process_function</span></code>’s output into the
 form expected by the metric.
 The output is expected to be a tuple <cite>(prediction, target)</cite>
@@ -421,8 +396,8 @@ to the metric to transform the output into the form expected by the metric.</p>
 </div>
 </div>
 <p>ignore_zero_hits=True case</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">metric</span> <span class="o">=</span> <span class="n">NDCG</span><span class="p">(</span><span class="n">top_k</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">])</span>
-<span class="n">metric</span><span class="o">.</span><span class="n">attach</span><span class="p">(</span><span class="n">default_evaluator</span><span class="p">,</span> <span class="s2">&quot;ndcg&quot;</span><span class="p">)</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">metric</span> <span class="o">=</span> <span class="n">HitRate</span><span class="p">(</span><span class="n">top_k</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">])</span>
+<span class="n">metric</span><span class="o">.</span><span class="n">attach</span><span class="p">(</span><span class="n">default_evaluator</span><span class="p">,</span><span class="s2">&quot;hit_rate&quot;</span><span class="p">)</span>
 <span class="n">y_pred</span><span class="o">=</span><span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">([</span>
     <span class="p">[</span><span class="mf">4.0</span><span class="p">,</span> <span class="mf">2.0</span><span class="p">,</span> <span class="mf">3.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">],</span>
     <span class="p">[</span><span class="mf">1.0</span><span class="p">,</span> <span class="mf">2.0</span><span class="p">,</span> <span class="mf">3.0</span><span class="p">,</span> <span class="mf">4.0</span><span class="p">]</span>
@@ -432,15 +407,15 @@ to the metric to transform the output into the form expected by the metric.</p>
     <span class="p">[</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">]</span>
 <span class="p">])</span>
 <span class="n">state</span> <span class="o">=</span> <span class="n">default_evaluator</span><span class="o">.</span><span class="n">run</span><span class="p">([(</span><span class="n">y_pred</span><span class="p">,</span> <span class="n">y_true</span><span class="p">)])</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">state</span><span class="o">.</span><span class="n">metrics</span><span class="p">[</span><span class="s2">&quot;ndcg&quot;</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">state</span><span class="o">.</span><span class="n">metrics</span><span class="p">[</span><span class="s2">&quot;hit_rate&quot;</span><span class="p">])</span>
 </pre></div>
 </div>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>[0.0, 0.38..., 0.38..., 0.65...]
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>[0.0, 1.0, 1.0, 1.0]
 </pre></div>
 </div>
 <p>ignore_zero_hits=False case</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">metric</span> <span class="o">=</span> <span class="n">NDCG</span><span class="p">(</span><span class="n">top_k</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">],</span> <span class="n">ignore_zero_hits</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
-<span class="n">metric</span><span class="o">.</span><span class="n">attach</span><span class="p">(</span><span class="n">default_evaluator</span><span class="p">,</span> <span class="s2">&quot;ndcg&quot;</span><span class="p">)</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">metric</span> <span class="o">=</span> <span class="n">HitRate</span><span class="p">(</span><span class="n">top_k</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">],</span> <span class="n">ignore_zero_hits</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="n">metric</span><span class="o">.</span><span class="n">attach</span><span class="p">(</span><span class="n">default_evaluator</span><span class="p">,</span><span class="s2">&quot;hit_rate&quot;</span><span class="p">)</span>
 <span class="n">y_pred</span><span class="o">=</span><span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">([</span>
     <span class="p">[</span><span class="mf">4.0</span><span class="p">,</span> <span class="mf">2.0</span><span class="p">,</span> <span class="mf">3.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">],</span>
     <span class="p">[</span><span class="mf">1.0</span><span class="p">,</span> <span class="mf">2.0</span><span class="p">,</span> <span class="mf">3.0</span><span class="p">,</span> <span class="mf">4.0</span><span class="p">]</span>
@@ -450,32 +425,51 @@ to the metric to transform the output into the form expected by the metric.</p>
     <span class="p">[</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">]</span>
 <span class="p">])</span>
 <span class="n">state</span> <span class="o">=</span> <span class="n">default_evaluator</span><span class="o">.</span><span class="n">run</span><span class="p">([(</span><span class="n">y_pred</span><span class="p">,</span> <span class="n">y_true</span><span class="p">)])</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">state</span><span class="o">.</span><span class="n">metrics</span><span class="p">[</span><span class="s2">&quot;ndcg&quot;</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">state</span><span class="o">.</span><span class="n">metrics</span><span class="p">[</span><span class="s2">&quot;hit_rate&quot;</span><span class="p">])</span>
 </pre></div>
 </div>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>[0.0, 0.19..., 0.19..., 0.32...]
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>[0.0, 0.5, 0.5, 0.5]
+</pre></div>
+</div>
+<p>int top_k case</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">metric</span> <span class="o">=</span> <span class="n">HitRate</span><span class="p">(</span><span class="n">top_k</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">metric</span><span class="o">.</span><span class="n">attach</span><span class="p">(</span><span class="n">default_evaluator</span><span class="p">,</span> <span class="s2">&quot;hit_rate&quot;</span><span class="p">)</span>
+<span class="n">y_pred</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">([</span>
+    <span class="p">[</span><span class="mf">4.0</span><span class="p">,</span> <span class="mf">2.0</span><span class="p">,</span> <span class="mf">3.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">],</span>
+<span class="p">])</span>
+<span class="n">y_true</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">([</span>
+    <span class="p">[</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">],</span>
+<span class="p">])</span>
+<span class="n">state</span> <span class="o">=</span> <span class="n">default_evaluator</span><span class="o">.</span><span class="n">run</span><span class="p">([(</span><span class="n">y_pred</span><span class="p">,</span> <span class="n">y_true</span><span class="p">)])</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">state</span><span class="o">.</span><span class="n">metrics</span><span class="p">[</span><span class="s2">&quot;hit_rate&quot;</span><span class="p">])</span>
+</pre></div>
+</div>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>[1.0]
 </pre></div>
 </div>
 <div class="versionadded">
-<p><span class="versionmodified added">New in version 0.6.0.</span></p>
+<p><span class="versionmodified added">New in version 0.5.4.</span></p>
+</div>
+<div class="versionchanged">
+<p><span class="versionmodified changed">Changed in version 0.5.4: </span><cite>top_k</cite> now accepts a single positive integer in addition to a list of integers.</p>
 </div>
 <p class="rubric">Methods</p>
 <table class="autosummary longtable docutils align-default">
 <tbody>
-<tr class="row-odd"><td><p><a class="reference internal" href="#ignite.metrics.NDCG.compute" title="ignite.metrics.NDCG.compute"><code class="xref py py-obj docutils literal notranslate"><span class="pre">compute</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#ignite.metrics.rec_sys.HitRate.compute" title="ignite.metrics.rec_sys.HitRate.compute"><code class="xref py py-obj docutils literal notranslate"><span class="pre">compute</span></code></a></p></td>
 <td><p>Computes the metric based on its accumulated state.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#ignite.metrics.NDCG.reset" title="ignite.metrics.NDCG.reset"><code class="xref py py-obj docutils literal notranslate"><span class="pre">reset</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#ignite.metrics.rec_sys.HitRate.reset" title="ignite.metrics.rec_sys.HitRate.reset"><code class="xref py py-obj docutils literal notranslate"><span class="pre">reset</span></code></a></p></td>
 <td><p>Resets the metric to its initial state.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#ignite.metrics.NDCG.update" title="ignite.metrics.NDCG.update"><code class="xref py py-obj docutils literal notranslate"><span class="pre">update</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#ignite.metrics.rec_sys.HitRate.update" title="ignite.metrics.rec_sys.HitRate.update"><code class="xref py py-obj docutils literal notranslate"><span class="pre">update</span></code></a></p></td>
 <td><p>Updates the metric's state using the passed batch output.</p></td>
 </tr>
 </tbody>
 </table>
 <dl class="py method">
-<dt class="sig sig-object py" id="ignite.metrics.NDCG.compute">
-<span class="sig-name descname"><span class="pre">compute</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ignite/metrics/rec_sys/ndcg.html#NDCG.compute"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ignite.metrics.NDCG.compute" title="Permalink to this definition">#</a></dt>
+<dt class="sig sig-object py" id="ignite.metrics.rec_sys.HitRate.compute">
+<span class="sig-name descname"><span class="pre">compute</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ignite/metrics/rec_sys/hitrate.html#HitRate.compute"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ignite.metrics.rec_sys.HitRate.compute" title="Permalink to this definition">#</a></dt>
 <dd><p>Computes the metric based on its accumulated state.</p>
 <p>By default, this is called at the end of each epoch.</p>
 <dl class="field-list simple">
@@ -497,8 +491,8 @@ it will be (shallow) flattened into <cite>engine.state.metrics</cite> when
 </dd></dl>
 
 <dl class="py method">
-<dt class="sig sig-object py" id="ignite.metrics.NDCG.reset">
-<span class="sig-name descname"><span class="pre">reset</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ignite/metrics/rec_sys/ndcg.html#NDCG.reset"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ignite.metrics.NDCG.reset" title="Permalink to this definition">#</a></dt>
+<dt class="sig sig-object py" id="ignite.metrics.rec_sys.HitRate.reset">
+<span class="sig-name descname"><span class="pre">reset</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ignite/metrics/rec_sys/hitrate.html#HitRate.reset"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ignite.metrics.rec_sys.HitRate.reset" title="Permalink to this definition">#</a></dt>
 <dd><p>Resets the metric to its initial state.</p>
 <p>By default, this is called at the start of each epoch.</p>
 <dl class="field-list simple">
@@ -509,8 +503,8 @@ it will be (shallow) flattened into <cite>engine.state.metrics</cite> when
 </dd></dl>
 
 <dl class="py method">
-<dt class="sig sig-object py" id="ignite.metrics.NDCG.update">
-<span class="sig-name descname"><span class="pre">update</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">output</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ignite/metrics/rec_sys/ndcg.html#NDCG.update"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ignite.metrics.NDCG.update" title="Permalink to this definition">#</a></dt>
+<dt class="sig sig-object py" id="ignite.metrics.rec_sys.HitRate.update">
+<span class="sig-name descname"><span class="pre">update</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">output</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ignite/metrics/rec_sys/hitrate.html#HitRate.update"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ignite.metrics.rec_sys.HitRate.update" title="Permalink to this definition">#</a></dt>
 <dd><p>Updates the metric’s state using the passed batch output.</p>
 <p>By default, this is called once for each batch.</p>
 <dl class="field-list simple">
@@ -535,12 +529,12 @@ it will be (shallow) flattened into <cite>engine.state.metrics</cite> when
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="../distributed.html" class="btn btn-neutral float-right" title="ignite.distributed" accesskey="n" rel="next">Next
+        <a href="ignite.metrics.rec_sys.NDCG.html" class="btn btn-neutral float-right" title="NDCG" accesskey="n" rel="next">Next
           <img src="../_static/images/chevron-right-orange.svg" alt="right arrow" class="next-page">
         </a>
       
       
-        <a href="ignite.metrics.HitRate.html" class="btn btn-neutral" title="HitRate" accesskey="p" rel="prev">
+        <a href="ignite.metrics.fairness.SubgroupMetric.html" class="btn btn-neutral" title="SubgroupMetric" accesskey="p" rel="prev">
           <img src="../_static/images/chevron-right-orange.svg" alt="left arrow" class="previous-page"> Previous
         </a>
       
@@ -559,7 +553,7 @@ it will be (shallow) flattened into <cite>engine.state.metrics</cite> when
         <td>
             <p>
                 &copy; Copyright 2026, PyTorch-Ignite Contributors.
-              Last updated on 06/01/2026, 6:03:54 PM.
+              Last updated on 06/01/2026, 6:24:24 PM.
             </p>
             
               <div>
@@ -592,11 +586,11 @@ it will be (shallow) flattened into <cite>engine.state.metrics</cite> when
           <div class="pytorch-right-menu" id="pytorch-right-menu">
             <div class="pytorch-side-scroll" id="pytorch-side-scroll-right">
               <ul>
-<li><a class="reference internal" href="#">NDCG</a><ul>
-<li><a class="reference internal" href="#ignite.metrics.NDCG"><code class="docutils literal notranslate"><span class="pre">NDCG</span></code></a><ul>
-<li><a class="reference internal" href="#ignite.metrics.NDCG.compute"><code class="docutils literal notranslate"><span class="pre">NDCG.compute()</span></code></a></li>
-<li><a class="reference internal" href="#ignite.metrics.NDCG.reset"><code class="docutils literal notranslate"><span class="pre">NDCG.reset()</span></code></a></li>
-<li><a class="reference internal" href="#ignite.metrics.NDCG.update"><code class="docutils literal notranslate"><span class="pre">NDCG.update()</span></code></a></li>
+<li><a class="reference internal" href="#">HitRate</a><ul>
+<li><a class="reference internal" href="#ignite.metrics.rec_sys.HitRate"><code class="docutils literal notranslate"><span class="pre">HitRate</span></code></a><ul>
+<li><a class="reference internal" href="#ignite.metrics.rec_sys.HitRate.compute"><code class="docutils literal notranslate"><span class="pre">HitRate.compute()</span></code></a></li>
+<li><a class="reference internal" href="#ignite.metrics.rec_sys.HitRate.reset"><code class="docutils literal notranslate"><span class="pre">HitRate.reset()</span></code></a></li>
+<li><a class="reference internal" href="#ignite.metrics.rec_sys.HitRate.update"><code class="docutils literal notranslate"><span class="pre">HitRate.update()</span></code></a></li>
 </ul>
 </li>
 </ul>

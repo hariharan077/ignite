@@ -524,8 +524,6 @@
 </li>
         <li><a href="generated/ignite.metrics.GpuInfo.html#ignite.metrics.GpuInfo.compute">(ignite.metrics.GpuInfo method)</a>
 </li>
-        <li><a href="generated/ignite.metrics.HitRate.html#ignite.metrics.HitRate.compute">(ignite.metrics.HitRate method)</a>
-</li>
         <li><a href="generated/ignite.metrics.HSIC.html#ignite.metrics.HSIC.compute">(ignite.metrics.HSIC method)</a>
 </li>
         <li><a href="generated/ignite.metrics.InceptionScore.html#ignite.metrics.InceptionScore.compute">(ignite.metrics.InceptionScore method)</a>
@@ -556,13 +554,15 @@
 </li>
         <li><a href="generated/ignite.metrics.MutualInformation.html#ignite.metrics.MutualInformation.compute">(ignite.metrics.MutualInformation method)</a>
 </li>
-        <li><a href="generated/ignite.metrics.NDCG.html#ignite.metrics.NDCG.compute">(ignite.metrics.NDCG method)</a>
-</li>
         <li><a href="generated/ignite.metrics.ObjectDetectionAvgPrecisionRecall.html#ignite.metrics.ObjectDetectionAvgPrecisionRecall.compute">(ignite.metrics.ObjectDetectionAvgPrecisionRecall method)</a>
 </li>
         <li><a href="generated/ignite.metrics.PrecisionRecallCurve.html#ignite.metrics.PrecisionRecallCurve.compute">(ignite.metrics.PrecisionRecallCurve method)</a>
 </li>
         <li><a href="generated/ignite.metrics.PSNR.html#ignite.metrics.PSNR.compute">(ignite.metrics.PSNR method)</a>
+</li>
+        <li><a href="generated/ignite.metrics.rec_sys.HitRate.html#ignite.metrics.rec_sys.HitRate.compute">(ignite.metrics.rec_sys.HitRate method)</a>
+</li>
+        <li><a href="generated/ignite.metrics.rec_sys.NDCG.html#ignite.metrics.rec_sys.NDCG.compute">(ignite.metrics.rec_sys.NDCG method)</a>
 </li>
         <li><a href="generated/ignite.metrics.regression.CanberraMetric.html#ignite.metrics.regression.CanberraMetric.compute">(ignite.metrics.regression.CanberraMetric method)</a>
 </li>
@@ -873,7 +873,7 @@
 </li>
       <li><a href="utils.html#ignite.utils.hash_checkpoint">hash_checkpoint() (in module ignite.utils)</a>
 </li>
-      <li><a href="generated/ignite.metrics.HitRate.html#ignite.metrics.HitRate">HitRate (class in ignite.metrics)</a>
+      <li><a href="generated/ignite.metrics.rec_sys.HitRate.html#ignite.metrics.rec_sys.HitRate">HitRate (class in ignite.metrics.rec_sys)</a>
 </li>
       <li><a href="distributed.html#ignite.distributed.utils.hostname">hostname() (in module ignite.distributed.utils)</a>
 </li>
@@ -1213,7 +1213,7 @@
   <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="generated/ignite.engine.events.CallableEventWithFilter.html#ignite.engine.events.CallableEventWithFilter.name">name (ignite.engine.events.CallableEventWithFilter attribute)</a>
 </li>
-      <li><a href="generated/ignite.metrics.NDCG.html#ignite.metrics.NDCG">NDCG (class in ignite.metrics)</a>
+      <li><a href="generated/ignite.metrics.rec_sys.NDCG.html#ignite.metrics.rec_sys.NDCG">NDCG (class in ignite.metrics.rec_sys)</a>
 </li>
       <li><a href="generated/ignite.handlers.neptune_logger.html#ignite.handlers.neptune_logger.NeptuneLogger">NeptuneLogger (class in ignite.handlers.neptune_logger)</a>
 </li>
@@ -1400,8 +1400,6 @@
 </li>
         <li><a href="generated/ignite.metrics.GpuInfo.html#ignite.metrics.GpuInfo.reset">(ignite.metrics.GpuInfo method)</a>
 </li>
-        <li><a href="generated/ignite.metrics.HitRate.html#ignite.metrics.HitRate.reset">(ignite.metrics.HitRate method)</a>
-</li>
         <li><a href="generated/ignite.metrics.HSIC.html#ignite.metrics.HSIC.reset">(ignite.metrics.HSIC method)</a>
 </li>
         <li><a href="generated/ignite.metrics.InceptionScore.html#ignite.metrics.InceptionScore.reset">(ignite.metrics.InceptionScore method)</a>
@@ -1430,11 +1428,13 @@
 </li>
         <li><a href="generated/ignite.metrics.MutualInformation.html#ignite.metrics.MutualInformation.reset">(ignite.metrics.MutualInformation method)</a>
 </li>
-        <li><a href="generated/ignite.metrics.NDCG.html#ignite.metrics.NDCG.reset">(ignite.metrics.NDCG method)</a>
-</li>
         <li><a href="generated/ignite.metrics.ObjectDetectionAvgPrecisionRecall.html#ignite.metrics.ObjectDetectionAvgPrecisionRecall.reset">(ignite.metrics.ObjectDetectionAvgPrecisionRecall method)</a>
 </li>
         <li><a href="generated/ignite.metrics.PSNR.html#ignite.metrics.PSNR.reset">(ignite.metrics.PSNR method)</a>
+</li>
+        <li><a href="generated/ignite.metrics.rec_sys.HitRate.html#ignite.metrics.rec_sys.HitRate.reset">(ignite.metrics.rec_sys.HitRate method)</a>
+</li>
+        <li><a href="generated/ignite.metrics.rec_sys.NDCG.html#ignite.metrics.rec_sys.NDCG.reset">(ignite.metrics.rec_sys.NDCG method)</a>
 </li>
         <li><a href="generated/ignite.metrics.regression.CanberraMetric.html#ignite.metrics.regression.CanberraMetric.reset">(ignite.metrics.regression.CanberraMetric method)</a>
 </li>
@@ -1704,8 +1704,6 @@
 </li>
         <li><a href="generated/ignite.metrics.GpuInfo.html#ignite.metrics.GpuInfo.update">(ignite.metrics.GpuInfo method)</a>
 </li>
-        <li><a href="generated/ignite.metrics.HitRate.html#ignite.metrics.HitRate.update">(ignite.metrics.HitRate method)</a>
-</li>
         <li><a href="generated/ignite.metrics.HSIC.html#ignite.metrics.HSIC.update">(ignite.metrics.HSIC method)</a>
 </li>
         <li><a href="generated/ignite.metrics.InceptionScore.html#ignite.metrics.InceptionScore.update">(ignite.metrics.InceptionScore method)</a>
@@ -1732,13 +1730,15 @@
 </li>
         <li><a href="generated/ignite.metrics.MultiLabelConfusionMatrix.html#ignite.metrics.MultiLabelConfusionMatrix.update">(ignite.metrics.MultiLabelConfusionMatrix method)</a>
 </li>
-        <li><a href="generated/ignite.metrics.NDCG.html#ignite.metrics.NDCG.update">(ignite.metrics.NDCG method)</a>
-</li>
         <li><a href="generated/ignite.metrics.ObjectDetectionAvgPrecisionRecall.html#ignite.metrics.ObjectDetectionAvgPrecisionRecall.update">(ignite.metrics.ObjectDetectionAvgPrecisionRecall method)</a>
 </li>
         <li><a href="generated/ignite.metrics.Precision.html#ignite.metrics.Precision.update">(ignite.metrics.Precision method)</a>
 </li>
         <li><a href="generated/ignite.metrics.PSNR.html#ignite.metrics.PSNR.update">(ignite.metrics.PSNR method)</a>
+</li>
+        <li><a href="generated/ignite.metrics.rec_sys.HitRate.html#ignite.metrics.rec_sys.HitRate.update">(ignite.metrics.rec_sys.HitRate method)</a>
+</li>
+        <li><a href="generated/ignite.metrics.rec_sys.NDCG.html#ignite.metrics.rec_sys.NDCG.update">(ignite.metrics.rec_sys.NDCG method)</a>
 </li>
         <li><a href="generated/ignite.metrics.Recall.html#ignite.metrics.Recall.update">(ignite.metrics.Recall method)</a>
 </li>
@@ -1846,7 +1846,7 @@
         <td>
             <p>
                 &copy; Copyright 2026, PyTorch-Ignite Contributors.
-              Last updated on 06/01/2026, 6:03:54 PM.
+              Last updated on 06/01/2026, 6:24:24 PM.
             </p>
             
               <div>

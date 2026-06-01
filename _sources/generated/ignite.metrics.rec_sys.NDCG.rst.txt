@@ -1,9 +1,9 @@
-﻿HitRate
-=======
+﻿NDCG
+====
 
-.. currentmodule:: ignite.metrics
+.. currentmodule:: ignite.metrics.rec_sys
 
-.. autoclass:: HitRate
+.. autoclass:: NDCG
    :members:
 
    
@@ -20,7 +20,7 @@
    
    
    
-      ~HitRate.compute
+      ~NDCG.compute
    
    
    
@@ -32,7 +32,7 @@
    
    
    
-      ~HitRate.reset
+      ~NDCG.reset
    
    
    
@@ -40,7 +40,7 @@
    
    
    
-      ~HitRate.update
+      ~NDCG.update
    
    
    

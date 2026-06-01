@@ -306,7 +306,7 @@
     <span class="k">return</span> <span class="n">torch</span><span class="o">.</span><span class="n">gather</span><span class="p">(</span><span class="n">items</span><span class="p">,</span> <span class="n">dim</span><span class="o">=-</span><span class="mi">1</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="n">indices</span><span class="p">)</span>
 
 
-<div class="viewcode-block" id="NDCG"><a class="viewcode-back" href="../../../../generated/ignite.metrics.NDCG.html#ignite.metrics.NDCG">[docs]</a><span class="k">class</span><span class="w"> </span><span class="nc">NDCG</span><span class="p">(</span><span class="n">Metric</span><span class="p">):</span>
+<div class="viewcode-block" id="NDCG"><a class="viewcode-back" href="../../../../generated/ignite.metrics.rec_sys.NDCG.html#ignite.metrics.rec_sys.NDCG">[docs]</a><span class="k">class</span><span class="w"> </span><span class="nc">NDCG</span><span class="p">(</span><span class="n">Metric</span><span class="p">):</span>
 <span class="w">    </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;Calculates the Normalized Discounted Cumulative Gain (NDCG) at `k` for Recommendation Systems.</span>
 
 <span class="sd">    For a step-by-step guide on how to use this metric, please refer to the</span>
@@ -454,7 +454,7 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">gain_function</span> <span class="o">=</span> <span class="n">gain_function</span>
         <span class="nb">super</span><span class="p">(</span><span class="n">NDCG</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">output_transform</span><span class="p">,</span> <span class="n">device</span><span class="o">=</span><span class="n">device</span><span class="p">,</span> <span class="n">skip_unrolling</span><span class="o">=</span><span class="n">skip_unrolling</span><span class="p">)</span>
 
-<div class="viewcode-block" id="NDCG.reset"><a class="viewcode-back" href="../../../../generated/ignite.metrics.NDCG.html#ignite.metrics.NDCG.reset">[docs]</a>    <span class="nd">@reinit__is_reduced</span>
+<div class="viewcode-block" id="NDCG.reset"><a class="viewcode-back" href="../../../../generated/ignite.metrics.rec_sys.NDCG.html#ignite.metrics.rec_sys.NDCG.reset">[docs]</a>    <span class="nd">@reinit__is_reduced</span>
     <span class="k">def</span><span class="w"> </span><span class="nf">reset</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_sum_ndcg_per_k</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">top_k</span><span class="p">),</span> <span class="n">device</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_device</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_num_examples</span> <span class="o">=</span> <span class="mi">0</span></div>
@@ -475,7 +475,7 @@
         <span class="n">dcg</span> <span class="o">=</span> <span class="p">(</span><span class="n">gains</span> <span class="o">*</span> <span class="n">discounts</span><span class="p">)</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">dim</span><span class="o">=-</span><span class="mi">1</span><span class="p">)</span>
         <span class="k">return</span> <span class="n">dcg</span>
 
-<div class="viewcode-block" id="NDCG.update"><a class="viewcode-back" href="../../../../generated/ignite.metrics.NDCG.html#ignite.metrics.NDCG.update">[docs]</a>    <span class="nd">@reinit__is_reduced</span>
+<div class="viewcode-block" id="NDCG.update"><a class="viewcode-back" href="../../../../generated/ignite.metrics.rec_sys.NDCG.html#ignite.metrics.rec_sys.NDCG.update">[docs]</a>    <span class="nd">@reinit__is_reduced</span>
     <span class="k">def</span><span class="w"> </span><span class="nf">update</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">output</span><span class="p">:</span> <span class="nb">tuple</span><span class="p">[</span><span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">,</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
         <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">output</span><span class="p">)</span> <span class="o">!=</span> <span class="mi">2</span><span class="p">:</span>
             <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;output should be in format `(y_pred,y)` but got tuple of </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">output</span><span class="p">)</span><span class="si">}</span><span class="s2"> tensors.&quot;</span><span class="p">)</span>
@@ -517,7 +517,7 @@
 
         <span class="bp">self</span><span class="o">.</span><span class="n">_num_examples</span> <span class="o">+=</span> <span class="n">y</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span></div>
 
-<div class="viewcode-block" id="NDCG.compute"><a class="viewcode-back" href="../../../../generated/ignite.metrics.NDCG.html#ignite.metrics.NDCG.compute">[docs]</a>    <span class="nd">@sync_all_reduce</span><span class="p">(</span><span class="s2">&quot;_sum_ndcg_per_k&quot;</span><span class="p">,</span> <span class="s2">&quot;_num_examples&quot;</span><span class="p">)</span>
+<div class="viewcode-block" id="NDCG.compute"><a class="viewcode-back" href="../../../../generated/ignite.metrics.rec_sys.NDCG.html#ignite.metrics.rec_sys.NDCG.compute">[docs]</a>    <span class="nd">@sync_all_reduce</span><span class="p">(</span><span class="s2">&quot;_sum_ndcg_per_k&quot;</span><span class="p">,</span> <span class="s2">&quot;_num_examples&quot;</span><span class="p">)</span>
     <span class="k">def</span><span class="w"> </span><span class="nf">compute</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="nb">float</span><span class="p">]:</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_num_examples</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
             <span class="k">raise</span> <span class="n">NotComputableError</span><span class="p">(</span><span class="s2">&quot;NDCG must have at least one example.&quot;</span><span class="p">)</span>
@@ -544,7 +544,7 @@
         <td>
             <p>
                 &copy; Copyright 2026, PyTorch-Ignite Contributors.
-              Last updated on 06/01/2026, 6:03:54 PM.
+              Last updated on 06/01/2026, 6:24:24 PM.
             </p>
             
               <div>
